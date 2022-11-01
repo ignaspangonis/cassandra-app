@@ -39,6 +39,12 @@ async function main() {
       message: '3. Show all items for owner with id 1',
       query: 'SELECT * FROM items_by_owner_id WHERE ownerId = 1;'
     })
+
+    await executeAndLog({
+      message: '4. Show all users with name John born after 2022-01-01',
+      query:
+        "SELECT * FROM users_by_name WHERE name='John' AND birthDate > toDate('2002-01-01');"
+    })
   } catch (error) {
     console.error(error)
   }
@@ -54,8 +60,8 @@ async function executeAndLog({
   query: string
 }) {
   logBlue(message)
-  logResult(await api.execute(query))
+  logQueryResult(await api.execute(query))
 }
 
-const logResult = (result: types.ResultSet) =>
+const logQueryResult = (result: types.ResultSet) =>
   result.rows.forEach((row) => console.log({ ...row }))

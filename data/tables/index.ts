@@ -9,8 +9,8 @@ type TableName =
 
 export type Table = {
   name: TableName
-  tableQuery: string
-  queries: string[]
+  createTableQuery: string
+  insertQueries: string[]
 }
 
 const entityFields = {
@@ -30,31 +30,31 @@ const parseQueries = (queries: string[], tableName: TableName) =>
 export const tables: Table[] = [
   {
     name: 'users',
-    queries: parseQueries(usersQueries, 'users'),
-    tableQuery: `(
+    insertQueries: parseQueries(usersQueries, 'users'),
+    createTableQuery: `(
       ${entityFields.users},
       PRIMARY KEY(userId))`
   },
   {
     name: 'users_by_name',
-    queries: parseQueries(usersQueries, 'users_by_name'),
-    tableQuery: `(
+    insertQueries: parseQueries(usersQueries, 'users_by_name'),
+    createTableQuery: `(
       ${entityFields.users}
       PRIMARY KEY((name), birthDate)
     ) WITH CLUSTERING ORDER BY (birthDate ASC)`
   },
   {
     name: 'items_by_owner_id',
-    queries: parseQueries(itemsQueries, 'items_by_owner_id'),
-    tableQuery: `(
+    insertQueries: parseQueries(itemsQueries, 'items_by_owner_id'),
+    createTableQuery: `(
       ${entityFields.items}
       PRIMARY KEY((ownerId), itemId)
     ) WITH CLUSTERING ORDER BY (itemId DESC)`
   },
   {
     name: 'items_by_title',
-    queries: parseQueries(itemsQueries, 'items_by_title'),
-    tableQuery: `(
+    insertQueries: parseQueries(itemsQueries, 'items_by_title'),
+    createTableQuery: `(
       ${entityFields.items}
       PRIMARY KEY((title), itemId)
     ) WITH CLUSTERING ORDER BY (itemId DESC)`

@@ -46,9 +46,9 @@ export const execute = (query: string) => client.execute(query)
 
 async function createAndPopulateTable(table: Table) {
   await dropTable(table.name)
-  await createTable(table.name, table.tableQuery)
+  await createTable(table.name, table.createTableQuery)
 
-  await Promise.all(table.queries.map(execute))
+  await Promise.all(table.insertQueries.map(execute))
 
   console.log(`Created ${table.name} table`)
 }
