@@ -4,18 +4,8 @@ import * as api from './data/api/cassandra'
 import { tables } from './data/tables'
 import { logBlue } from './utils/console'
 
-// users:
-// GET all
-// GET by id
-// GET by name
-// items:
-// GET all
-// GET by ownerId
-// GET by title
-
 main()
 
-// A function that queries the data and prints it to the console
 async function main() {
   try {
     api.init()
