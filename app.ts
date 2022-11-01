@@ -31,7 +31,12 @@ async function main() {
     })
 
     await executeAndLog({
-      message: '2. Show all items for owner with id 1',
+      message: '2. Show all items with title "Nike shoes"',
+      query: "SELECT * FROM items_by_title WHERE title = 'Nike shoes';"
+    })
+
+    await executeAndLog({
+      message: '3. Show all items for owner with id 1',
       query: 'SELECT * FROM items_by_owner_id WHERE ownerId = 1;'
     })
   } catch (error) {
