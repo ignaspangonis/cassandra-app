@@ -2,7 +2,7 @@ import { types } from 'cassandra-driver'
 
 import * as api from './data/api/cassandra'
 import { tables } from './data/tables'
-import { logMessageBlue } from './utils/console'
+import { logBlue } from './utils/console'
 
 // users:
 // GET all
@@ -21,9 +21,9 @@ async function main() {
     api.init()
     await api.connect()
 
-    logMessageBlue('> Starting building tables')
+    logBlue('> Starting building tables')
     await api.createAndPopulateTables(tables)
-    logMessageBlue('> Ended building tables')
+    logBlue('> Ended building tables')
 
     await executeAndPrint({
       message: '1. Show all users',
@@ -48,7 +48,7 @@ async function executeAndPrint({
   message: string
   query: string
 }) {
-  logMessageBlue(message)
+  logBlue(message)
   printResult(await api.execute(query))
 }
 
