@@ -6,6 +6,9 @@ import { logBlue } from './utils/console'
 
 main()
 
+// TODO: adjust model image
+// TODO: add one more entity?
+// TODO: make sure all requirements are met
 async function main() {
   try {
     api.init()
