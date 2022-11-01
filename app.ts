@@ -45,6 +45,11 @@ async function main() {
       query:
         "SELECT * FROM users_by_name WHERE name='John' AND birthDate > toDate('2002-01-01');"
     })
+
+    await executeAndLog({
+      message: '5. Get titles of all items',
+      query: 'SELECT title FROM items_by_title;'
+    })
   } catch (error) {
     console.error(error)
   }
