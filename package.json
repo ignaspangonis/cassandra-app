@@ -1,0 +1,26 @@
+{
+  "name": "cassandra-app",
+  "version": "1.0.0",
+  "description": "Cassandra app",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node app.ts",
+    "start-server": "cassandra -f"
+  },
+  "dependencies": {
+    "cassandra-driver": "^4.6.4",
+    "cli-color": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/cli-color": "^2.0.2",
+    "@types/node": "^18.11.3",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "author": "Ignas Pangonis",
+  "license": "ISC"
+}
