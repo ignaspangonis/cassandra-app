@@ -25,14 +25,14 @@ async function main() {
     await api.createAndPopulateTables(tables)
     logBlue('> Ended building tables')
 
-    await executeAndPrint({
+    await executeAndLog({
       message: '1. Show all users',
       query: 'SELECT * FROM users;'
     })
 
-    await executeAndPrint({
-      message: '2. Show all items',
-      query: 'SELECT * FROM items_by_owner_id;'
+    await executeAndLog({
+      message: '2. Show all items for owner with id 1',
+      query: 'SELECT * FROM items_by_owner_id WHERE ownerId = 1;'
     })
   } catch (error) {
     console.error(error)
@@ -41,7 +41,7 @@ async function main() {
   api.shutdown()
 }
 
-async function executeAndPrint({
+async function executeAndLog({
   message,
   query
 }: {
@@ -49,8 +49,8 @@ async function executeAndPrint({
   query: string
 }) {
   logBlue(message)
-  printResult(await api.execute(query))
+  logResult(await api.execute(query))
 }
 
-const printResult = (result: types.ResultSet) =>
+const logResult = (result: types.ResultSet) =>
   result.rows.forEach((row) => console.log({ ...row }))
