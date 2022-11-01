@@ -1,6 +1,7 @@
 import { types } from 'cassandra-driver'
 
 import * as api from './data/api/cassandra'
+import { tables } from './data/tables'
 import { logMessageBlue } from './utils/console'
 
 // users:
@@ -21,7 +22,7 @@ async function main() {
     await api.connect()
 
     logMessageBlue('> Starting building tables')
-    await api.createAndPopulateTables()
+    await api.createAndPopulateTables(tables)
     logMessageBlue('> Ended building tables')
 
     await executeAndPrint({
