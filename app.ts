@@ -43,6 +43,11 @@ async function main() {
       message: '5. Get titles of all items',
       query: 'SELECT title FROM items_by_title;'
     })
+
+    await executeAndLog({
+      message: '6. Get all items',
+      query: 'SELECT * FROM items_by_title;'
+    })
   } catch (error) {
     console.error(error)
   }

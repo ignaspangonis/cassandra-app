@@ -13,7 +13,7 @@ export type Table = {
   insertQueries: string[]
 }
 
-const entityFields = {
+const fieldsByEntity = {
   users: `userId INT,
     name TEXT,
     birthDate DATE,`,
@@ -21,7 +21,8 @@ const entityFields = {
     ownerId INT,
     title TEXT,
     description TEXT,
-    price DECIMAL,`
+    price DECIMAL,
+    tags set<text>,`
 } as const
 
 const parseQueries = (queries: string[], tableName: TableName) =>
@@ -32,14 +33,14 @@ export const tables: Table[] = [
     name: 'users',
     insertQueries: parseQueries(usersQueries, 'users'),
     createTableQuery: `(
-      ${entityFields.users},
+      ${fieldsByEntity.users},
       PRIMARY KEY(userId))`
   },
   {
     name: 'users_by_name',
     insertQueries: parseQueries(usersQueries, 'users_by_name'),
     createTableQuery: `(
-      ${entityFields.users}
+      ${fieldsByEntity.users}
       PRIMARY KEY((name), birthDate)
     ) WITH CLUSTERING ORDER BY (birthDate ASC)`
   },
@@ -47,7 +48,7 @@ export const tables: Table[] = [
     name: 'items_by_owner_id',
     insertQueries: parseQueries(itemsQueries, 'items_by_owner_id'),
     createTableQuery: `(
-      ${entityFields.items}
+      ${fieldsByEntity.items}
       PRIMARY KEY((ownerId), itemId)
     ) WITH CLUSTERING ORDER BY (itemId DESC)`
   },
@@ -55,7 +56,7 @@ export const tables: Table[] = [
     name: 'items_by_title',
     insertQueries: parseQueries(itemsQueries, 'items_by_title'),
     createTableQuery: `(
-      ${entityFields.items}
+      ${fieldsByEntity.items}
       PRIMARY KEY((title), itemId)
     ) WITH CLUSTERING ORDER BY (itemId DESC)`
   }
