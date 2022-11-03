@@ -4,7 +4,7 @@
 
 ### Task implementation
 
-C2C shop with 3 enitites- users, items, tags.
+C2C shop with 3 enitites - users, items, tags.
 
 ---
 
