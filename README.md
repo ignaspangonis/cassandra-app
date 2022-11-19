@@ -5,6 +5,7 @@
 ### Task implementation
 
 C2C shop with 3 logical entities - users, items, tags.
+The aim of this program is to try out designing a Cassandra database and play with different queries.
 
 ---
 
