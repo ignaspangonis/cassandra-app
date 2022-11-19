@@ -4,15 +4,15 @@
 
 ### Task implementation
 
-C2C shop with 3 enitites - users, items, tags.
+C2C shop with 3 logical entities - users, items, tags.
 
 ---
 
-### Physical data model
+### Logical data model
 
 The tables have been simplified, as the data were entered into the tables manually. Only the most important attributes are left in all tables.
 
-![physical data model](./model.png)
+![logical data model](./model.png)
 
 ---
 
