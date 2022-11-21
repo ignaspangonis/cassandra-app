@@ -1,6 +1,6 @@
 import { Client } from 'cassandra-driver'
 
-import { Table } from '../tables'
+import { TableInfo } from '../tables'
 
 /*
   Queries:
@@ -44,12 +44,12 @@ export const dropTable = (tableName: string) =>
 
 export const execute = (query: string) => client.execute(query)
 
-async function createAndPopulateTable(table: Table) {
+async function createAndPopulateTable(table: TableInfo) {
   await dropTable(table.name)
-  await createTable(table.name, table.createTableQuery)
+  await createTable(table.name, table.query)
   await Promise.all(table.insertQueries.map(execute))
 }
 
-export async function createAndPopulateTables(tables: Table[]) {
+export async function createAndPopulateTables(tables: TableInfo[]) {
   await Promise.all(tables.map(createAndPopulateTable))
 }
